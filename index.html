@@ -1,0 +1,1 @@
+<input type="file" onchange="f=this.files[0];r=new FileReader();r.onload=e=>{u=URL.createObjectURL(new Blob([e.target.result],{type:'text/html'}));location.href=u};r.readAsText(f)">
