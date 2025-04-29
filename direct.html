@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple File Loader</title>
+</head>
+<body>
+    <input type="file" id="fileInput">
+    <div id="output"></div>
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.open();
+                    document.write(e.target.result); // Replace current page content with the file's HTML
+                    document.close();
+                };
+                reader.readAsText(file);
+            }
+        });
+    </script>
+</body>
+</html>
