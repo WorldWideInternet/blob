@@ -1,0 +1,16 @@
+<input type="file" id="fileInput">
+<iframe id="gameFrame" style="width:100vw;height:100vh;border:none;"></iframe>
+<script>
+  fileInput.onchange = e => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = evt => {
+        const blob = new Blob([evt.target.result], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        document.getElementById('gameFrame').src = url;
+      };
+      reader.readAsText(file);
+    }
+  };
+</script>
